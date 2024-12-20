@@ -1,0 +1,37 @@
+from tkinter import *
+import tkinter as tk
+#from tkinter import ttk
+import ttkbootstrap as ttk
+
+def convert():
+    mile_input = entry_int.get()              
+    km_output = mile_input * 1.61
+    output_string.set(km_output)
+
+window = ttk.Window(themename = 'cosmo')
+window.title('Formation')                 #titre a la fenetre
+window.geometry('400x200')                #taille de la fenetre format ("widthxheight")
+
+title_label = ttk.Label(master = window, text = 'Conversion miles to km', font = 'roboto 16 bold') #definie zone de texte ce qui est ecrit et la taille
+title_label.pack()                                      #affiche le texte def
+
+input_frame = ttk.Frame(window)
+entry_int = tk.IntVar()
+entry = ttk.Entry(input_frame, textvariable = entry_int)
+button = ttk.Button(input_frame, text = 'Conversion', command = convert)
+entry.pack(side = 'left', padx= 15)                                 #affiche le champ d'entrée et laisse espace de 15 avec le prochain module
+button.pack(side = 'left')                                          #affiche le button en snc a gauche de l'entree
+input_frame.pack(pady = 10 )                                        #affiche le bloc a 10 en desous du premier 
+
+window.bind('<KeyPress>',)
+
+
+
+output_string = tk.StringVar()
+output_label = tk.Label(window, text = 'Output', font = 'roboto 16', textvariable = output_string)
+output_label.pack()
+
+button_quit = ttk.Button(window, text = 'Quit', command=window.destroy)
+button_quit.pack()
+
+window.mainloop()
